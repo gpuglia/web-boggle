@@ -3,12 +3,12 @@ require 'byebug'
 class Solver
 	def initialize
 		@path = []
-		@target= ["K", "A", "B"]
+		@target= ["L", "U", "I", "L"]
 		@directions = [-5, -4, -3, -1, 1, 3, 4, 5]
 		@board = [ "F", "Z", "K", "L",
 						   "T", "A", "K", "U",
 						   "N", "A", "H", "A",
-						   "B", "Q", "R", "L" ]
+						   "B", "Q", "K", "L" ]
 	end
 
 	def solve!
@@ -20,20 +20,20 @@ class Solver
 
 
 	def find_word(position, target_letter_index=0)
-		# byebug
 		return false if @path.include?(position)
 		current_letter = @board[position]
 		return false unless current_letter == @target[target_letter_index]
 		@path << position
-		return true if finished?
 
 		@directions.each do |direction|
-			position = position + direction
-			next if position_invalid?(position)
-			target_letter_index += 1
-			find_word(position, target_letter_index)
-			@path.pop
+			next if position_invalid?(position + direction)
+			if @board[position + direction] == @target[target_letter_index + 1]
+				find_word(position + direction, target_letter_index + 1)
+			end
 		end
+
+		return true if finished?
+		@path.pop
 		return false
 	end
 
@@ -47,5 +47,7 @@ class Solver
 end
 
 boggle = Solver.new
-puts boggle.solve!
+p boggle.solve!
+
+
 
