@@ -3,7 +3,7 @@ require 'byebug'
 class Solver
 	def initialize
 		@path = []
-		@target= ["L", "U", "I", "L"]
+		@target= ["L", "U", "A", "H"]
 		@directions = [-5, -4, -3, -1, 1, 3, 4, 5]
 		@board = [ "F", "Z", "K", "L",
 						   "T", "A", "K", "U",
@@ -13,7 +13,7 @@ class Solver
 
 	def solve!
 		@board.each_with_index do |letter, position|
-			find_word(position)
+			find_word(position) if letter == @target.first
 		end
 		@path.length == 0 ? "no word" : @path
 	end
@@ -21,8 +21,8 @@ class Solver
 
 	def find_word(position, target_letter_index=0)
 		return false if @path.include?(position)
-		current_letter = @board[position]
-		return false unless current_letter == @target[target_letter_index]
+		# current_letter = @board[position]
+		# return false unless @board[position] == @target[target_letter_index]
 		@path << position
 
 		@directions.each do |direction|
