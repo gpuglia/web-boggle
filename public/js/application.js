@@ -1,7 +1,10 @@
 $(document).ready(function() {
-  // This is called after the document has loaded in its entirety
-  // This guarantees that any elements we bind to will exist on the page
-  // when we try to bind to them
-
-  // See: http://docs.jquery.com/Tutorials:Introducing_$(document).ready()
+	$("#shake").on("click", function(event) {
+		event.preventDefault();
+		$("td").empty();
+		shakenBoard = myBoard.shakeBoard();
+		for (i = 0; i < 16; i++) {
+			$("#cell"+i).append(shakenBoard[i])
+		}
+	});
 });

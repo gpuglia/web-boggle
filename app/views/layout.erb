@@ -13,11 +13,19 @@
   <link rel="stylesheet" href="/css/application.css">
 
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script src="/js/shake_board.js"></script>
   <script src="/js/application.js"></script>
 
-  <title></title>
+  <title>Boggle2</title>
 </head>
 <body>
-  <%= yield %>
+  <div class="container">
+    <h1>Boggle Word Checker</h1>
+    <%= yield %>
+    <div class="footer">
+      <p>&copy; Gustavo and Annie. Bringing Phase 1 to the web since 2014.</p>
+    </div>
+  </div>
+
 </body>
 </html>

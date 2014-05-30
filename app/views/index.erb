@@ -1,23 +1,39 @@
-<div class="container">
-  <h1>Welcome to Sinatra!</h1>
-  <p>Hello, world!</p>
+<div id="user_word_input">
+  <form>
+    <input type="text" name="target_word">
+    <input type="submit" value="Check word">
+  </form>
+</div>
 
+<div id="board_container">
   <table>
     <tr>
-      <th>File Description</th>
-      <th>File Location</th>
+      <td id="cell0"></td>
+      <td id="cell1"></td>
+      <td id="cell2"></td>
+      <td id="cell3"></td>
     </tr>
     <tr>
-      <td>This view file</td>
-      <td><code><%= __FILE__.gsub(Sinatra::Application.root, '') %></code></td>
+      <td id="cell4"></td>
+      <td id="cell5"></td>
+      <td id="cell6"></td>
+      <td id="cell7"></td>
     </tr>
     <tr>
-      <td>The layout file</td>
-      <td><code><%= File.expand_path('../layout.erb', __FILE__).gsub(Sinatra::Application.root, '') %></code></td>
+      <td id="cell8"></td>
+      <td id="cell9"></td>
+      <td id="cell10"></td>
+      <td id="cell11"></td>
     </tr>
     <tr>
-      <td>The current controller</td>
-      <td><code><%= File.expand_path('../../controllers/index.rb', __FILE__).gsub(Sinatra::Application.root, '') %></code></td>
+      <td id="cell12"></td>
+      <td id="cell13"></td>
+      <td id="cell14"></td>
+      <td id="cell15"></td>
     </tr>
   </table>
 </div>
+
+<p id="shake">
+  <a href="/shake">Shake!</a>
+</p>
