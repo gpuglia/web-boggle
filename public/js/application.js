@@ -32,6 +32,7 @@ $(document).ready(function() {
       })
     }
     ,500);
+    $("#word_list").append("<li>"+target+"</li>");
   } else {
     $("#user_word_input").effect("shake", {distance: 10, times: 2}, 100);
   };

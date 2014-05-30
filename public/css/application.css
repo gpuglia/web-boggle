@@ -70,6 +70,22 @@ table td.found {
   margin-right: auto;
 }
 
+#word_list {
+  width: 100px;
+  height: 300px;
+  background-color: #DF7514;
+  border-radius: 18px;
+}
+
+#word_list ul {
+  list-style: none;
+}
+#word_list li {
+  color: white;
+  size: 12px;
+  text-align: center;
+}
+
 
 .pure-button-primary {
   background-color: #DF7514;
