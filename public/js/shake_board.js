@@ -19,6 +19,7 @@ Board.prototype.rollDice = function() {
 };
 
 Board.prototype.shakeBoard = function() {
+	$("td").removeClass("searching found");
 	this.shuffleDice();
 	return this.rollDice();
 }

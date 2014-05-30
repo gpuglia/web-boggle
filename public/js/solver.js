@@ -1,7 +1,7 @@
 function Solver(board, target) {
     this.path = [];
     this.target = target;
-    this.directions = [-5, -4, -3, -1, 1, 3, 4, 5];
+    // this.directions = [-5, -4, -3, -1, 1, 3, 4, 5];
     this.board = board;
 };
 
@@ -11,6 +11,8 @@ Solver.prototype.solve = function() {
     if (this.board[position] === this.target[0]) {
       this.find_word(position);
     }
+    if (this.finished())
+      break;
   }
   return this.path
 };
@@ -23,7 +25,11 @@ Solver.prototype.find_word = function(position, target_letter_index) {
   } //adding }
 
   this.path.push(position);
-  $("#cell"+position).addClass("searching");
+
+  // window.setTimeout(function(){
+    $("#cell"+position).addClass("searching");
+  // },500);
+  window.setTimeout(1 + 1,500);
 
   console.log(this.path); //FIND ME
 
@@ -32,26 +38,24 @@ Solver.prototype.find_word = function(position, target_letter_index) {
     return true;
   } //adding }
 
-
-  for (var i = 0; i < this.directions.length; i++) {
-    if (!this.position_invalid(position + this.directions[i])) {
-      console.log("current position: " + position);
-      console.log("next position: " + (position + this.directions[i]));
-      // console.log(this.board[position + this.directions[i]]) //FIND ME
-      console.log("next letter: "+this.target[target_letter_index + 1])
-      console.log("tgli: " + (target_letter_index + 1)) //FIND ME
-      if (this.board[position + this.directions[i]] === this.target[target_letter_index + 1]) {
-        console.log("before recursion")
-        if (this.find_word(position + this.directions[i], target_letter_index + 1)) {
-          console.log("!!!!!!!!!!!!!!!!!!!!!!!")
+  console.log(this.directions(7))
+  for (var i = 0; i < this.directions(position).length; i++) {
+    if (!this.position_invalid(position + this.directions(position)[i])) {
+    // (this.board[position + this.directions(position)[i]] === this.target[target_letter_index + 1])
+      if (this.board[position + this.directions(position)[i]] === this.target[target_letter_index + 1]) {
+        // console.log("before recursion")
+        if (this.find_word(position + this.directions(position)[i], target_letter_index + 1)) {
+          // console.log("!!!!!!!!!!!!!!!!!!!!!!!")
           return true;
         }
       }
     }
   }
-
-  this.path.pop();
-  $("#cell"+position).removeClass("searching");
+  var popped = this.path.pop();
+  console.log("POPPED: " + popped);
+    // console.log("cellID: " + ("#cell"+popped));
+  $("#cell"+popped).removeClass("searching");
+  // window.setTimeout(1000);
   return false;
 };
 
@@ -71,6 +75,21 @@ Solver.prototype.position_invalid = function(position) {
 Solver.prototype.finished = function() {
   return (this.path.length === this.target.length)
 }
+
+//adding directions function
+Solver.prototype.directions = function(position) {
+  if (position % 4 === 3) {
+    return [-5, -4, -1, 3, 4, 20, 20, 20];
+  } else if (position % 4 === 0) {
+    return [-4, -3, 1, 4, 5, 20, 20, 20];
+  } else {
+    return [-5, -4, -3, -1, 1, 3, 4, 5];
+  }
+};
+
+// Solver.prototype.isTargetInNextDirection = function() {
+
+// }
 
 // boggle = new Solver(currentBoard);
 // boggle.solve();
