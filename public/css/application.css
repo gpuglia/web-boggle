@@ -38,7 +38,7 @@ body {
 }
 
 table {
-  border-spacing: 10px;
+  border-spacing: 8px;
   border-collapse: separate;
 	margin: 15px;
 }
@@ -46,7 +46,7 @@ table {
 table td {
 	height: 80px;
 	width: 80px;
-	border-radius: 20px;
+	border-radius: 18px;
 	text-align: center;
 	font-size: 40px;
 	color: #29428A;
