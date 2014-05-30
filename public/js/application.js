@@ -17,10 +17,11 @@ $(document).ready(function() {
     var target = $('input[name=target_word]').val().toUpperCase();
     boggle = new Solver(window.currentBoard, target);
     var path = boggle.solve();
-
+    console.log(path)
     $.each(path, function(index, position){
+      console.log(position);
       $("#cell"+position).removeClass("searching");
-      $("#cell"+position).addClass("done");
+      $("#cell"+position).addClass("found");
 
     })
       //if cell is in path while searching
