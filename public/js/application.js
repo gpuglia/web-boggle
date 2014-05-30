@@ -5,6 +5,7 @@ $(document).ready(function() {
     };
 	$("#shake").on("click", function(event) {
 		event.preventDefault();
+    // $("#board_container").effect("shake", 80);
 		$("td").empty();
 		window.currentBoard = myBoard.shakeBoard();
 
@@ -22,6 +23,7 @@ $(document).ready(function() {
     boggle = new Solver(window.currentBoard, target);
     var path = boggle.solve();
     console.log(path)
+    if (path.length > 0) {
     window.setTimeout(function() {
     $.each(path, function(index, position){
       console.log(position);
@@ -30,9 +32,8 @@ $(document).ready(function() {
       })
     }
     ,500);
-      //if cell is in path while searching
-      // $("#cell"+i).addClass("searching");
-      // //if cell is in path when done
-      // $("#cell"+i).addClass("done");
+  } else {
+    $("#user_word_input").effect("shake", {distance: 10, times: 2}, 100);
+  };
   });
 });
