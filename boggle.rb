@@ -6,7 +6,7 @@ class Solver
 		@target= ["K", "A", "B"]
 		@directions = [-5, -4, -3, -1, 1, 3, 4, 5]
 		@board = [ "F", "Z", "K", "L",
-						   "T", "A", "K", "B",
+						   "T", "A", "K", "N",
 						   "N", "A", "Z", "A",
 						   "B", "Q", "R", "K" ]
 	end
@@ -20,7 +20,7 @@ class Solver
 	end
 
 	def find_word(position, target_letter_index=0)
-		p @path
+		# p @path
 		return false if @path.include?(position)  #so the same position can't be in the path twice
 		@path << position 												#pushes position in to path
 		return true if finished? 									#stops if the path is complete
