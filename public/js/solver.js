@@ -29,7 +29,7 @@ Solver.prototype.find_word = function(position, target_letter_index) {
   // window.setTimeout(function(){
     $("#cell"+position).addClass("searching");
   // },500);
-  window.setTimeout(1 + 1,500);
+  window.setTimeout(1 +1,500);
 
   console.log(this.path); //FIND ME
 
