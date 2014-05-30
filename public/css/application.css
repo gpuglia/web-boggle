@@ -1,8 +1,13 @@
+body {
+  background-color: #DBDBDB;
+}
+
 .container {
   margin: 20px auto;
   width: 600px;
   padding: 0px 20px 20px 20px;
-  border: 1px dotted black;
+  border-radius: 20px;
+  background-color:white;
 }
 
 th {
@@ -65,11 +70,6 @@ table td.found {
   margin-right: auto;
 }
 
-.footer {
-	border-top: 4px solid black;
-	text-align: center;
-	font-weight: bold
-}
 
 .pure-button-primary {
   background-color: #DF7514;
@@ -78,4 +78,11 @@ table td.found {
 a {
   text-decoration: none;
   color: white;
+}
+
+.footer {
+	margin-top: 30px;
+  border-top: 2px solid black;
+	text-align: center;
+	font-weight: bold
 }
