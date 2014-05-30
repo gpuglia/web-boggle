@@ -1,11 +1,8 @@
-function Solver() {
+function Solver(board, target) {
     this.path = [];
-    this.target = ["K", "A", "B"];
+    this.target = target;
     this.directions = [-5, -4, -3, -1, 1, 3, 4, 5];
-    this.board = ["F", "Z", "K", "L",
-                  "T", "A", "K", "N",
-                  "N", "A", "Z", "A",
-                  "B", "Q", "R", "K" ];
+    this.board = board;
 };
 
 Solver.prototype.solve = function() {
@@ -24,10 +21,11 @@ Solver.prototype.find_word = function(position, target_letter_index) {
   if (this.path.indexOf(position) != -1) { //adding {
     return false;
   } //adding }
-  console.log("position:" + position)
+
   this.path.push(position);
-  console.log("PATH")
-  console.log(this.path.length); //FIND ME
+  $("#cell"+position).addClass("searching");
+
+  console.log(this.path); //FIND ME
 
 
   if (this.finished()) { //adding {
@@ -53,6 +51,7 @@ Solver.prototype.find_word = function(position, target_letter_index) {
   }
 
   this.path.pop();
+  $("#cell"+position).removeClass("searching");
   return false;
 };
 
@@ -73,6 +72,6 @@ Solver.prototype.finished = function() {
   return (this.path.length === this.target.length)
 }
 
-boggle = new Solver();
-boggle.solve();
-console.log(boggle.path)
+// boggle = new Solver(currentBoard);
+// boggle.solve();
+// console.log(boggle.path);
